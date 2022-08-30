@@ -1,4 +1,4 @@
-# 👋 Krypton
+# 👋 Zukma
 
 > Zukma is a blockchain network with the core pillars in Decentralize Treasury, cross-chain operability and Web3. The networks have an advanced suite of governance tools and, using the Substrate framework that allows autonomous deployment of upgrades. The Zukma Chain are adapting therefore to the growing needs of a DeFi loving community without the risk of Hardfork by blockchain forks. By connecting the three pillars (Decentralize Treasury, Cross-Chain Operability and Web3) the Zukma ecosystem serves as a foundational layer for a truly decentralized DeFi network, where DeFi users control their data and are not limited by trust bounds within the network.
 
