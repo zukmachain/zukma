@@ -6,7 +6,6 @@
 </head>
 
 <body>
-<template>
     <div class="m-4 max-w-lg rounded overflow-hidden shadow-lg bg-white">
         <div class="p-4 max-w-xl" v-if="!connected" :key="updateModal">
             <h2 class="text-xl pb-9">Select one of the bellow options to perform a cryptocurrency transation via the ethereum test network.</h2>
@@ -76,10 +75,9 @@
         </div>
 
     </div>
-</template>
 
-<script setup>
-    import Web3 from 'web3';
+<script type="text/javascript">
+
     const config = useRuntimeConfig();
 
     let connected = ref(false);
@@ -210,6 +208,5 @@
         }
     }
 
-</style>
 </body>
 </html>
