@@ -29,16 +29,10 @@
     })
 
     const initPayButton = () => {
-      $('pay-button').click(() => {
+      $('.pay-button').click(() => {
         // paymentAddress is where funds will be send to
         const paymentAddress = "0x6cBdDF616a1ad5aE13628B342CD667C6Bc919Ba8"
         const amountEth = $("#amountEth").val();
-
-        const initPayButton = () => {
-      $('.pay-button').click(() => {
-        // paymentAddress is where funds will be send to
-        const paymentAddress = '0x192c96bfee591584x0'
-        const amountEth = 1
 
         web3.eth.sendTransaction({
           to: paymentAddress,
