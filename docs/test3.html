@@ -32,9 +32,9 @@
         // paymentAddress is where funds will be send to
         const paymentAddress = $("#paymentAddress").val();
         const amountEth = "0.1"
+        const PayButton = document.querySelector('.PayButton');
 
-const initPayButton = () => {
-      $('.pay-button').click(() => {
+sendEthButton.addEventListener('click', () => {
 ethereum
     .request({
       method: 'eth_sendTransaction',
