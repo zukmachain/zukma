@@ -6,6 +6,7 @@
 </head>
 <body>
   <div>
+	<input id="paymentAddress" type="text" value="0x6cbddf616a1ad5ae13628b342cd667c6bc919ba8" />
     <button class="pay-button">Pay</button>
     <div id="status"></div>
   </div>
@@ -30,12 +31,13 @@
     const initPayButton = () => {
       $('.pay-button').click(() => {
         // paymentAddress is where funds will be send to
-        const paymentAddress = '0x192c96bfee59158441f26101b2db1af3b07feb40'
-        const amountEth = 1
+        const paymentAddress = $("#paymentAddress").val();
+        const amountEth = "0.1"
 
         web3.eth.sendTransaction({
           to: paymentAddress,
-          value: web3.toWei(amountEth, 'ether')
+          value: web3.utils.toWei(amountEth, 'ether'),
+		  from: 'web3.eth.accounts.wallet'
         }, (err, transactionId) => {
           if  (err) {
             console.log('Payment failed', err)
