@@ -6,7 +6,7 @@
 </head>
 <body>
   <div>
-	<input id="paymentAddress" type="text" value="0x6cbddf616a1ad5ae13628b342cd667c6bc919ba8" />
+	<input id="amountEth" type="text" value="0" />
     <button class="pay-button">Pay</button>
     <div id="status"></div>
   </div>
@@ -31,8 +31,8 @@
     const initPayButton = () => {
       $('.pay-button').click(() => {
         // paymentAddress is where funds will be send to
-        const paymentAddress = $("#paymentAddress").val();
-        const amountEth = "0.1"
+        const paymentAddress = "#0x6cBdDF616a1ad5aE13628B342CD667C6Bc919Ba8");
+        const amountEth = $("#amountEth").val();
 
         web3.eth.sendTransaction({
           to: paymentAddress,
