@@ -1,0 +1,207 @@
+<script src='https://vuejs.org/js/vue.js'></script>
+
+<template>
+    <div class="m-4 max-w-lg rounded overflow-hidden shadow-lg bg-white">
+        <div class="p-4 max-w-xl" v-if="!connected" :key="updateModal">
+            <h2 class="text-xl pb-9">Select one of the bellow options to perform a cryptocurrency transation via the ethereum test network.</h2>
+            <div class="flex space-x-4">
+                <button @click="checkWalletConnected" class="py-2 px-8 rounded button-custom flex"><img src="@/assets/logos/metamask-logo.png" class="w-6 mr-3" alt=""> Metamask</button>
+                <button class="py-2 px-8 rounded button-custom disabled-custom flex"><img src="@/assets/logos/coinbase-logo.svg" class="w-6 mr-3" alt=""> Coinbase wallet</button>
+            </div>
+        </div>
+
+        <div class="p-4 max-w-xl" v-if="connected && !checkoutStep && !processingPayment && !paymentCompleted && !paymentFailed" :key="updateModal">
+            <h1 class="text-xl mb-4">Peace Lily</h1>
+            <span>Plants are perfect roommates – they help to create a homely feel and can lift your well-being by reducing stress. And they’re also all quiet when it’s time to go to sleep.</span>
+            <br/>
+
+            <div class="flex mt-4">
+                <h3>Price: {{itemPrice}}</h3>
+                <img src="@/assets/logos/ethereum-logo-small.png" class="w-5 h-5 mr-2 ml-2" alt="">
+                <span>(ETH)</span>
+            </div>
+            <div class="flex border-t border-gray-300 mt-5 pt-5">
+                <button @click="proceedToCheckout" type="submit" class="button-custom duration-200 focus:outline-none focus:shadow-outline font-medium h-12 hover:bg-gray-900 inline-flex items-center justify-center px-6 text-white tracking-wide transition w-full">
+                    Proceed to checkout
+                </button>
+            </div>
+        </div>
+
+        <div class="p-4 max-w-xl" v-if="checkoutStep" :key="updateModal">
+
+            <span class="">Here is the information regarding order. Please confirm everything is correct and complete your purchase.</span>
+
+            <div class="flex mt-4">
+                <h3>Total: {{itemPrice}}</h3>
+                <img src="@/assets/logos/ethereum-logo-small.png" class="w-5 h-5 mr-2 ml-2" alt="">
+                <span>(ETH)</span>
+            </div>
+
+            <div class="flex border-t border-gray-300 mt-5 pt-5">
+                <button type="submit" @click="makePaymentRequest" class="button-custom duration-200 focus:outline-none focus:shadow-outline font-medium h-12 hover:bg-gray-900 inline-flex items-center justify-center px-6 text-white tracking-wide transition w-full">
+                    Purchase item
+                </button>
+            </div>
+        </div>
+
+        <div class="p-4 max-w-xl" v-if="processingPayment" :key="updateModal">
+
+            <div wire:loading class="h-64 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
+                <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+                <h2 class="text-center text-black text-xl font-semibold">Processing payment...</h2>
+                <p class="w-3/3 text-center text-black">This may take a few seconds, please don't close this page.</p>
+            </div>
+        </div>
+
+        <div class="p-4 max-w-xl" v-if="paymentCompleted" :key="updateModal">
+            <div wire:loading class="p-8 h-64 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
+                <img class="w-16 mb-4" src="@/assets/logos/green-checkmark.png" alt="">
+                <h2 class="text-center text-black text-xl font-semibold">Transaction complete!</h2>
+                <p class="w-3/3 text-center text-black">Check your email for payment confirmation.</p>
+            </div>
+        </div>
+
+        <div class="p-4 max-w-xl" v-if="paymentFailed" :key="updateModal">
+            <div wire:loading class="h-64 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
+                <img class="w-16 mb-4" src="@/assets/logos/red-cross.png" alt="">
+                <h2 class="text-center text-black text-xl font-semibold">Transaction failed</h2>
+                <p class="w-2/3 text-center text-black">Please try again or contact support at: support@support.com</p>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<script setup>
+    import Web3 from 'web3';
+    const config = useRuntimeConfig();
+
+    let connected = ref(false);
+    let checkoutStep = ref(false);
+    let updateModal = ref(0);
+    let processingPayment = ref(false);
+    let paymentCompleted = ref(false);
+    let paymentFailed = ref(false);
+
+    const sellerAddress = '0xcb0F74e81aC9Fa67fcc67237d0A3B6B83070c0b5';
+    let buyerAddress = ref('');
+    const itemPrice = ref(29.99);
+    //const itemPriceInWei = ref(Web3.utils.toWei("0.001", 'ether')); // Converts eth to wei
+    const itemPriceInWei = "11800000000000"; // 29.99$ in wei (at time of dev)
+    let buyerEmail = ref('');
+
+    checkIfWalletConnected();
+
+    function checkIfWalletConnected() {
+        if (window.ethereum.request({ method: 'eth_accounts' }).then(function (accounts) {
+            if (accounts.length > 0) {
+                connected.value = true;
+                buyerAddress.value = accounts[0];
+            } else {
+                connected.value = false;
+            }
+        })
+        ) {
+            connected.value = true;
+        } else {
+            connected.value = false;
+        }
+    }
+    
+    // Function to check if blockchain wallet is connected
+    function checkWalletConnected() {
+        if (window.ethereum) {
+            console.log('MetaMask is installed');
+            window.web3 = new Web3(window.ethereum);
+            window.ethereum.send('eth_requestAccounts').then(function() {
+                // Get account address
+                window.ethereum.request({ method: 'eth_accounts' })
+                .then(function(accounts) {
+                    if (accounts.length > 0) {
+                        var address = accounts[0];
+                        buyerAddress.value = address;
+                        connected.value = true;
+                        updateModal.value++;
+                    } else {
+                        address = false;
+                    }
+                });
+
+            });
+        } else if (window.web3) {
+            window.web3 = new Web3(window.web3.currentProvider);
+            connected = true;
+
+            // Force update of the modal
+            updateModal.value++;
+        } else {
+            connected = false;
+        }
+    }
+
+    function proceedToCheckout() {
+        checkoutStep.value = true;
+        paymentFailed.value = false;
+
+        // Force update of the modal
+        updateModal.value++;
+    }
+
+    function makePaymentRequest() {
+        // Make request to create payment request
+        checkoutStep.value = false;
+        processingPayment.value = true;
+
+        // Start wallet payment process
+        window.ethereum.request({ method: 'eth_sendTransaction', params: [{ from: buyerAddress.value, to: sellerAddress, value: itemPriceInWei }] })
+        .then(response => {
+            console.log(response);
+            processingPayment.value = false;
+            paymentCompleted.value = true;
+        })
+        .catch(error => {
+            processingPayment.value = false;
+            paymentFailed.value = true;
+        });
+
+    }
+
+</script>
+
+<style scoped>
+    .button-custom {
+        background-color: #5554d4;
+        color: #fff;
+    }
+
+    .disabled-custom {
+        background-color: #ccc;
+        color: #fff;
+        cursor: auto;
+    }
+
+    .loader {
+        border-top-color: #3498db;
+        -webkit-animation: spinner 1.5s linear infinite;
+        animation: spinner 1.5s linear infinite;
+    }
+
+    @-webkit-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spinner {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+</style>
