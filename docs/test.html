@@ -6,10 +6,14 @@
 </head>
 <body>
   <div>
-        <input id="ether" type="text" value="10" />
+<form onsubmit="return false">
+  <label>ETH Value: </label>
+  <input type="text" id="ether" value="1000"/>
+</form>
 	<button class="enableEthereumButton btn">Enable Ethereum</button>
         <button class="sendEthButton btn">Send Eth</button>
   </div>
+
   <script type="text/javascript">
     
       var etherValuee = document.getElementById("ether").value;
