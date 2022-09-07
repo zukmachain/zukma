@@ -14,8 +14,6 @@
 
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -232,71 +230,37 @@
                         <form class="login-form">
                             <!-- Field -->
                             <div class="control-material is-primary">      
-                                <input class="material-input " type="email" >
+                                <input class="material-input " type="email" required>
                                 <span class="material-highlight"></span>
                                 <span class="bar"></span>
                                 <label>Email</label>
                             </div>
                             <!-- Field -->
                             <div class="control-material is-primary">      
-                                <input class="material-input " type="password" >
+                                <input class="material-input " type="password" required>
                                 <span class="material-highlight"></span>
                                 <span class="bar"></span>
                                 <label>Password</label>
                             </div>
-
-                        </form>
-
+                            
                             <!-- Submit -->
                             <div>
-                                <button class="enableEthereumButton btn">Connect to Metamask</button>
+                                <button class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
+                                    <span class="text">Login</span>
+                                    <span class="front-gradient"></span>
+                                </button>
                             </div>
                         <br>
                             <div>
-                                <button class="sendEthButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
-                                    <span class="text">Buy ZEP</span>
+                                <button class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
+                                    <span class="text">Register</span>
                                     <span class="front-gradient"></span>
-                                    <span class="sendEthButton"</span>
                                 </button>
                             </div>
-                        
+                        </form>
     
                     </div>
                     <!-- Hero image -->
-<script type="text/javascript">
-    
-      const ethereumButton = document.querySelector('.enableEthereumButton');
-      const sendEthButton = document.querySelector('.sendEthButton');
-
-let accounts = [];
-
-//Sending Ethereum to an address
-sendEthButton.addEventListener('click', () => {
-  ethereum
-    .request({
-      method: 'eth_sendTransaction',
-      params: [
-        {
-          from: accounts[0],
-          to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
-          value: '100000000000000000'
-          gasPrice: '0x09184e72a000',
-          gas: '0x2710',
-        },
-      ],
-    })
-    .then((txHash) => console.log(txHash))
-    .catch((error) => console.error);
-});
-
-ethereumButton.addEventListener('click', () => {
-  getAccount();
-});
-
-async function getAccount() {
-  accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-}
-  </script>
                     
     
         <!-- Hero footer -->
@@ -390,7 +354,7 @@ async function getAccount() {
     }"></a></div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="./js/bundle.js"></script>
-    
+
 </body>
 
 </html>
