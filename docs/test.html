@@ -10,20 +10,20 @@
   <label>ETH Value: </label>
   <input type="text" id="ether" value="1000000000000000"/>
 </form>
-	<button class="enableEthereumButton btn">Enable Ethereum</button>
-        <button class="sendEthButton btn">Send Eth</button>
+	<button class="enableEthereumButton id="test" btn">Enable Ethereum</button>
+        <button class="sendEthButton id="test2" btn">Send Eth</button>
   </div>
 
   <script type="text/javascript">
     
       var etherValuee = document.getElementById("ether").value;
-      const ethereumButton = document.querySelector('.enableEthereumButton');
-      const sendEthButton = document.querySelector('.sendEthButton');
+      const test = document.querySelector('.test');
+      const test2 = document.querySelector('.test2');
 
 let accounts = [];
 
 //Sending Ethereum to an address
-sendEthButton.addEventListener('click', () => {
+test2.addEventListener('click', () => {
   ethereum
     .request({
       method: 'eth_sendTransaction',
@@ -41,7 +41,7 @@ sendEthButton.addEventListener('click', () => {
     .catch((error) => console.error);
 });
 
-ethereumButton.addEventListener('click', () => {
+test.addEventListener('click', () => {
   getAccount();
 });
 
