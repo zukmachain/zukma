@@ -247,8 +247,9 @@
                     </div>
                     <!-- Hero image -->
 
-<script type="text/javascript">
+      <script type="text/javascript">
     
+      const connectAccount = document.querySelector('#connectAccount');
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const sendEthButton = document.querySelector('#sendEthButton');
 
@@ -262,9 +263,8 @@ sendEthButton.addEventListener('click', () => {
       params: [
         {
           from: accounts[0],
-          to: '0xc7A0a1e9117f77B2c42F7078B0408C0A93717077',
+          to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
           value: '1000000000000000000',
-          chainId: '0x38',
         },
       ],
     })
@@ -277,9 +277,11 @@ enableEthereumButton.addEventListener('click', () => {
 });
 
 async function getAccount() {
-  accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const account = accounts[0];
+  connectAccount.innerHTML = account;
 }
-  </script>         
+          </script>   
     
         <!-- Hero footer -->
         <div class="hero-foot">
