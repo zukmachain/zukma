@@ -242,26 +242,58 @@
                                 <span class="bar"></span>
                                 <label>Name</label>
                             </div>
-                            
+                    </form>        
                             <!-- Submit -->
                             <div>
-                                <button class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
-                                    <span><button class="enableEthereumButton">Connect web3</button></span>
+                                <button id="enableEthereumButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
+                                    <span> class="text">Connect with Metamask</span>
                                     <span class="front-gradient"></span>
                                 </button>
                             </div>
                         <br>
                             <div>
-                                <button class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
+                                <button id="sendEthButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
                                     <span class="text">Buy ZEP</span>
                                     <span class="front-gradient"></span>
                                 </button>
                             </div>
-                        </form>
+                        
     
                     </div>
                     <!-- Hero image -->
-                    
+
+<script type="text/javascript">
+    
+      const enableEthereumButton = document.querySelector('#enableEthereumButton');
+      const sendEthButton = document.querySelector('#sendEthButton');
+
+let accounts = [];
+
+//Sending Ethereum to an address
+sendEthButton.addEventListener('click', () => {
+  ethereum
+    .request({
+      method: 'eth_sendTransaction',
+      params: [
+        {
+          from: accounts[0],
+          to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
+          value: '1000000000000000000',
+        },
+      ],
+    })
+    .then((txHash) => console.log(txHash))
+    .catch((error) => console.error);
+});
+
+enableEthereumButton.addEventListener('click', () => {
+  getAccount();
+});
+
+async function getAccount() {
+  accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+}
+  </script>         
     
         <!-- Hero footer -->
         <div class="hero-foot">
@@ -354,7 +386,8 @@
     }"></a></div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="./js/bundle.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </body>
 
 </html>
