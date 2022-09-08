@@ -18,16 +18,20 @@
 </head>
 <body>
   <div>
-	<button class="enableEthereumButton" btn">Enable Ethereum</button>
+	<button id="enableEthereumButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
+                                    <span id="connectAccount" class="text">Connect Web3</span>
+                                    <span class="front-gradient"></span>
+                                </button>
         <button id="sendEthButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
-                                    <span class="text">Connect Web3</span>
+                                    <span class="text">Send</span>
                                     <span class="front-gradient"></span>
                                 </button>
   </div>
 
   <script type="text/javascript">
     
-      const enableEthereumButton = document.querySelector('.enableEthereumButton');
+      const connectAccount = document.querySelector('#connectAccount');
+      const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const sendEthButton = document.querySelector('#sendEthButton');
 
 let accounts = [];
@@ -54,7 +58,9 @@ enableEthereumButton.addEventListener('click', () => {
 });
 
 async function getAccount() {
-  accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  const account = accounts[0];
+  connectAccount.innerHTML = account;
 }
   </script>
 </body>
