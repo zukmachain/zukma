@@ -39,8 +39,6 @@
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
       const sendEthButton = document.querySelector('#sendEthButton');
-      const connectAccount = connectAccountb
-      const enableEthereum = enableEthereumButtonb
 
 let accounts = [];
 
@@ -69,6 +67,7 @@ async function getAccount() {
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
   connectAccount.innerHTML = account;
+  connectAccountb.innerHTML = account;
 }
   </script>
 </body>
