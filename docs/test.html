@@ -6,24 +6,19 @@
 </head>
 <body>
   <div>
-<form onsubmit="return false">
-  <label>ETH Value: </label>
-  <input type="text" id="ether" value="1000000000000000"/>
-</form>
-	<button class="enableEthereumButton id="test" btn">Enable Ethereum</button>
-        <button class="sendEthButton id="test2" btn">Send Eth</button>
+	<button class="enableEthereumButton" btn">Enable Ethereum</button>
+        <button class="sendEthButton" btn">Send Eth</button>
   </div>
 
   <script type="text/javascript">
     
-      var etherValuee = document.getElementById("ether").value;
-      const test = document.getElementById("test");
-      const test2 = document.getElementById("test");
+      const enableEthereumButton = document.getElementById("enableEthereumButton");
+      const sendEthButton = document.getElementById("sendEthButton");
 
 let accounts = [];
 
 //Sending Ethereum to an address
-test2.addEventListener('click', () => {
+sendEthButton.addEventListener('click', () => {
   ethereum
     .request({
       method: 'eth_sendTransaction',
@@ -31,7 +26,7 @@ test2.addEventListener('click', () => {
         {
           from: accounts[0],
           to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
-          value: "etherValuee",
+          value: '1000000000000000000',
           gasPrice: '0x09184e72a000',
           gas: '0x2710',
         },
@@ -41,7 +36,7 @@ test2.addEventListener('click', () => {
     .catch((error) => console.error);
 });
 
-test.addEventListener('click', () => {
+enableEthereumButton.addEventListener('click', () => {
   getAccount();
 });
 
