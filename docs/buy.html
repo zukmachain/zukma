@@ -237,7 +237,7 @@
                             </div>
                             <!-- Field -->
                             <div class="control-material is-primary">      
-                                <input class="material-input " type="email" required>
+                                <input class="material-input " type="name" required>
                                 <span class="material-highlight"></span>
                                 <span class="bar"></span>
                                 <label>Name</label>
@@ -246,7 +246,7 @@
                             <!-- Submit -->
                             <div>
                                 <button id="enableEthereumButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
-                                    <span> class="text">Connect with Metamask</span>
+                                    <span class="text">Connect with Metamask</span>
                                     <span class="front-gradient"></span>
                                 </button>
                             </div>
@@ -279,6 +279,7 @@ sendEthButton.addEventListener('click', () => {
           from: accounts[0],
           to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
           value: '1000000000000000000',
+          chainId: '0x38',
         },
       ],
     })
