@@ -85,7 +85,7 @@
                                 </div
                                 <!-- Sign up -->
                                 <div id="enableEthereumButton" class="navbar-item is-nav-link">
-                                    <a id="enableEthereumButton" class="button k-button k-primary raised has-gradient slanted">
+                                    <a class="button k-button k-primary raised has-gradient slanted">
                                         <span id="connectAccount" class="text">Connect to Metamask</span>
                                         <span class="front-gradient"></span>
                                     </a>
@@ -155,9 +155,9 @@
                                     <a class="is-centered-responsive" href="buy">Buy ZEP</a>
                                 </div
                                 <!-- Sign up -->
-                                <div id="enableEthereumButton" class="navbar-item is-nav-link">
-                                    <a id="enableEthereumButton" class="button k-button k-primary raised has-gradient slanted">
-                                        <span id="connectAccount" class="text">Connect to Metamask</span>
+                                <div class="navbar-item is-nav-link">
+                                    <a id="enableEthereumButtonb" class="button k-button k-primary raised has-gradient slanted">
+                                        <span id="connectAccountb" class="text">Connect to Metamask</span>
                                         <span class="front-gradient"></span>
                                     </a>
                                 </div>
@@ -261,9 +261,11 @@
 
       <script type="text/javascript">
     
-      const connectAccount = document.querySelectorAll('#connectAccount');
-      const enableEthereumButton = document.querySelectorAll('#enableEthereumButton');
-      const sendEthButton = document.querySelectorAll('#sendEthButton');
+      const connectAccount = document.querySelector('#connectAccount');
+      const connectAccountb = document.querySelector('#connectAccountb');
+      const enableEthereumButton = document.querySelector('#enableEthereumButton');
+      const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
+      const sendEthButton = document.querySelector('#sendEthButton');
 
 let accounts = [];
 
@@ -276,7 +278,7 @@ sendEthButton.addEventListener('click', () => {
         {
           from: accounts[0],
           to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
-          value: '1000000000000000000',
+          value: '10000000000000000000',
         },
       ],
     })
@@ -288,10 +290,15 @@ enableEthereumButton.addEventListener('click', () => {
   getAccount();
 });
 
+enableEthereumButtonb.addEventListener('click', () => {
+  getAccount();
+});
+
 async function getAccount() {
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
   connectAccount.innerHTML = account;
+  connectAccountb.innerHTML = account;
 }
   </script>   
     
