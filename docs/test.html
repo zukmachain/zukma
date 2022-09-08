@@ -22,6 +22,10 @@
                                     <span id="connectAccount" class="text">Connect Web3</span>
                                     <span class="front-gradient"></span>
                                 </button>
+        <button id="enableEthereumButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
+                                    <span id="connectAccount" class="text">Connect Web3 2</span>
+                                    <span class="front-gradient"></span>
+                                </button>
         <button id="sendEthButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
                                     <span class="text">Send</span>
                                     <span class="front-gradient"></span>
@@ -30,8 +34,8 @@
 
   <script type="text/javascript">
     
-      const connectAccount = document.querySelector('#connectAccount');
-      const enableEthereumButton = document.querySelector('#enableEthereumButton');
+      const connectAccount = document.querySelectorAll('#connectAccount');
+      const enableEthereumButton = document.querySelectorAll('#enableEthereumButton');
       const sendEthButton = document.querySelector('#sendEthButton');
 
 let accounts = [];
