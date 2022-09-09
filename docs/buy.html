@@ -254,7 +254,7 @@
     
       const connectAccount = document.querySelector('#connectAccount');
       const connectAccountb = document.querySelector('#connectAccountb');
-      const connectAccountc = document.querySelector('#connectAccountc').value"Wallet";
+      const connectAccountc = document.querySelector('#connectAccountc').value;
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
       const sendEthButton = document.querySelector('#sendEthButton');
@@ -291,7 +291,7 @@ async function getAccount() {
   const account = accounts[0];
   connectAccount.innerHTML = account;
   connectAccountb.innerHTML = account;
-  connectAccountc.value = account;
+  connectAccountc.innerHTML = account;
 }
   </script>   
     
