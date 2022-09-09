@@ -152,6 +152,7 @@
       const sendEthButton = document.querySelector('#sendEthButton');
 
 let accounts = [];
+let balances = [];
 
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
@@ -183,10 +184,10 @@ async function getAccount() {
   connectAccount.innerHTML = account;
 }
 
-async function getAccount() {
+async function accountBalance() {
   const accounts = await ethereum.request({ method: 'eth_getBalance' });
-  const account = accounts[0];
-  accountBalance.innerHTML = account;
+  const balance = balances[0];
+  accountBalance.innerHTML = balance;
 
   </script>
 </body>
