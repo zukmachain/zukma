@@ -146,6 +146,7 @@
   <script type="text/javascript">
     
       const connectAccount = document.querySelector('#connectAccount');
+      const accountBalance = document.querySelector('#accountBalance');
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
       const sendEthButton = document.querySelector('#sendEthButton');
@@ -185,7 +186,7 @@ async function getAccount() {
 async function getAccount() {
   const accounts = await ethereum.request({ method: 'eth_getBalance' });
   const account = accounts[0];
-  connectAccount.innerHTML = account;
+  accountBalance.innerHTML = account;
 
   </script>
 </body>
