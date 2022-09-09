@@ -186,7 +186,7 @@ async function getAccount() {
 }
 
 async function getAccount() {
-  const result = await ethereum.request({ 'eth_getBalance' , params: [account, 'latest'] });
+  const result = await ethereum.request({ method: 'eth_getBalance' , params: [account, 'latest'] });
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
 
