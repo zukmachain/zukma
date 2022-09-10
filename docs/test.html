@@ -105,7 +105,9 @@ async function getAccount() {
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
   const tokenbalance = await contract.methods.balanceOf(account).call()
-  zepBalance.innerHTML = tokenbalance
+  let weib = parseInt(tokenbalance,16);
+  let tokenbalances = tokenbalance / (10**18);
+  zepBalance.innerHTML = tokenbalances
 }
 
   </script>
