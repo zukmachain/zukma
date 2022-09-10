@@ -66,7 +66,7 @@ const ABI = [
     type: "function",
   },
 ];
-const address = '0xdac17f958d2ee523a2206206994597c13d831ec7'
+const address = '0xB5204883B815F63Aa1c74De5FE35f93Fe5ae3f0d'
 const contract = new web3.eth.Contract(ABI, address)
 
 let accounts = [];
@@ -79,7 +79,7 @@ sendEthButton.addEventListener('click', () => {
       params: [
         {
           from: accounts[0],
-          to: '0x2f318C334780961FB129D2a6c30D0763d9a5C970',
+          to: '0xc7A0a1e9117f77B2c42F7078B0408C0A93717077',
         },
       ],
     })
