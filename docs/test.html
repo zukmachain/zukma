@@ -44,8 +44,6 @@
       const sendEthButton = document.querySelector('#sendEthButton');
 
 let accounts = [];
-let wei = parseInt(result,16);
-let balance = wei / (10**18);
 
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
@@ -76,8 +74,11 @@ async function getAccount() {
   const account = accounts[0];
   connectAccount.innerHTML = account;
   const result = await ethereum.request({ method: 'eth_getBalance' , params: [account, 'latest']});
+  let wei = parseInt(result,16);
+  let balance = wei / (10**18);
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
+
 }
 
   </script>
