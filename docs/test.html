@@ -19,114 +19,6 @@
     <script src="./js/bundle.js"></script>
 </head>
 <body>
-<div class="hero-body">
-                <div class="container">
-                    <div class="columns is-vcentered">
-
-                <!-- Title & subtitle -->
-                <h2 class="title is-light is-semibold has-text-centered is-spaced">Start Investing Today</h2>
-<div class="divider is-centered"></div>
-                <h4 class="subtitle is-6 is-light has-text-centered is-compact">Our mission is to revolutionise the future of DeFi by providing the industry-leading blockchain, exchange, and end to end financial platform within a community-governed ecosystem.</h4>
-    
-           
-
-<!-- Content wrapper -->
-                <div class="content-wrapper is-large">
-    
-                    <!-- Flying tabs wrapper -->
-                    <div x-data="initTabs()" x-init="setupCountdown()" class="flying-wrapper">
-                        <!-- Tabs container -->
-                        <div class="flying-tabs-container">
-<!-- Tabs -->
-                            <div class="flying-tabs">
-                            </div>
-                        </div>
-
-<!-- Tabs content wrapper -->
-                        <div class="flying-tabs-content">
-                            <!-- Tab 1 -->
-                            <div  class="tab-content" :class="{
-                                    'is-active': activeTab === 'tab-1',
-                                    '': activeTab != 'tab-1'
-                                }">
-                                <div class="columns is-vcentered tab-content-wrapper">
-                                    <!-- ICO Terms -->
-                                    <div class="column is-5 is-offset-1">
-                                        <div class="text-content">
-                                            <h4 class="title is-6 is-light animated preFadeInUp fadeInUp">LAUNCHING TERMS</h4>
-                                            <ul class="custom-bullet-list">
-                                                <li class="animated preFadeInUp fadeInUp">
-                                                    <span>Fairlaunch</span>
-                                                    <br>
-                                                    <span class="item-content">Presale starts on Oct 5 2022 (10:00am GMT)</span>
-                                                </li>
-                                                <li class="animated preFadeInUp fadeInUp">
-                                                    <span>Liqudity</span>
-                                                    <br>
-                                                    <span class="item-content">Liquidity starts on Oct 12 2022 (10:00am GMT)</span>
-                                                </li>
-                                                <li class="animated preFadeInUp fadeInUp">
-                                                    <span>Marketing</span>
-                                                    <br>
-                                                    <span class="item-content">Marketing starts on Oct 15 2022 (10:00am GMT)</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- ICO COuntdown -->
-                                    <div class="column is-5">
-                                        <!-- Card -->
-                                        <div class="ico-card animated preFadeInUp fadeInUp">
-                                            <!-- Countdown -->
-                                            <ul id="countdown" class="is-ico">
-                                                <li id="days">
-                                                    <div id="days-count" class="timer-number">00</div>
-                                                    <div class="label">Days</div>
-                                                </li>
-                                                <li id="hours">
-                                                    <div id="hours-count" class="timer-number">00</div>
-                                                    <div class="label">Hours</div>
-                                                </li>
-                                                <li id="minutes">
-                                                    <div id="minutes-count" class="timer-number">00</div>
-                                                    <div class="label">Minutes</div>
-                                                </li>
-                                                <li id="seconds">
-                                                    <div id="seconds-count" class="timer-number">01</div>
-                                                    <div class="label">Seconds</div>
-                                                </li>
-                                            </ul>
-                                            <!-- Progress bar -->
-                                            <div class="progress-block">
-                                                <!-- Tags -->
-                                                <div class="progress-tags">
-                                                    <div>Fairlaunch</div>
-                                                    <div>Liquidity</div>
-                                                    <div>Marketing</div>
-                                                </div>
-                                                <progress class="progress ico-progress" value="0" max="100">0%</progress>
-                                            </div>
-    
-                                            <!-- Button -->
-                                            <div class="button-block">
-                                                <a href="#" class="button k-button k-secondary raised has-gradient is-bold is-fullwidth rounded">
-                                                    <span class="text">Buy ZEP Token Now</span>
-                                                    <span class="front-gradient"></span>
-                                                </a>
-                                            </div>
-    
-                                            <!-- Icons -->
-                                            <div class="icon-block">
-                                                <i class="cf cf-btc"></i>
-                                                <i class="cf cf-eth"></i>
-                                                <i class="cf cf-doge"></i>
-                                                <i class="cf cf-usdt"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
 
   <div>
 	<button id="enableEthereumButton" class="button is-button k-button k-primary raised has-gradient is-bold is-fullwidth">
@@ -185,7 +77,7 @@ async function getAccount() {
   connectAccount.innerHTML = account;
 }
 
-async function getAccount() {
+ function getAccount() {
   const result = await ethereum.request({ method: 'eth_getBalance' , params: [account, 'latest'] });
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
