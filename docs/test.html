@@ -107,8 +107,8 @@ async function getAccount() {
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
   const zukma = await contract.methods.balanceOf(accounts[0]).call();
-  let weia = parseInt(zukma,16);
-  let zepbalance = weia / (10**18);
+  let wei = parseInt(zukma,16);
+  let zepbalance = wei / (10**18);
   const zepbalances = zepbalance;
   zepBalance.innerHTML = zepbalances;
 }
