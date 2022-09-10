@@ -45,6 +45,32 @@
       const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
       const sendEthButton = document.querySelector('#sendEthButton');
 
+const Web3 = require('web3');
+const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/1d7581b987af425f9265208ace63361d'));
+const balanceOfABI = [
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_owner",
+                "type": "address"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "name": "balance",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+];
+const tokenContract = '0x6b175474e89094c44da98b954eedeac495271d0f';
+const contract = new web3.eth.Contract(balanceOfABI, tokenContract);
+
 let accounts = [];
 
 //Sending Ethereum to an address
@@ -80,6 +106,11 @@ async function getAccount() {
   let balance = wei / (10**18);
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
+  const zukma = await contract.methods.balanceOf(tokenHolder).call();
+  let weia = parseInt(zukma,16);
+  let zepbalance = weia / (10**18);
+  const zepbalances = zepbalance;
+  zepBalance.innerHTML = zepbalances;
 }
 
   </script>
