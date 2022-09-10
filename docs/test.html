@@ -44,27 +44,6 @@
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
       const sendEthButton = document.querySelector('#sendEthButton');
-      const Web3 = require("web3");
-
-      const provider =
-  "https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"
-
-const Web3Client = new Web3(new Web3.providers.HttpProvider(provider));
-
-// The minimum ABI required to get the ERC20 Token balance
-const minABI = [
-  // balanceOf
-  {
-    constant: true,
-    inputs: [{ name: "_owner", type: "address" }],
-    name: "balanceOf",
-    outputs: [{ name: "balance", type: "uint256" }],
-    type: "function",
-  },
-];
-       const tokenAddress = '0x0d8775f648430679a709e98d2b0cb6250d2887ef';
-
-       const contract = new Web3Client.eth.Contract(minABI, tokenAddress);
 
 let accounts = [];
 
@@ -101,11 +80,6 @@ async function getAccount() {
   let balance = wei / (10**18);
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
-  const zukma = await contract.methods.balanceOf(account).call();
-  let wei = parseInt(zukma,16);
-  let zepbalance = wei / (10**18);
-  const zepbalances = zepbalance + " ETH";
-  zepBalance.innerHTML = zepbalances;
 }
 
   </script>
