@@ -66,7 +66,7 @@ const ABI = [
     type: "function",
   },
 ];
-const address = '0xdAC17F958D2ee523a2206206994597C13D831ec7';
+const address = '0xB5204883B815F63Aa1c74De5FE35f93Fe5ae3f0d';
 const contract = new web3.eth.Contract(ABI, address);
 
 let accounts = [];
@@ -105,7 +105,7 @@ async function getAccount() {
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
   const tokenbalance = await contract.methods.balanceOf(account).call()
-  zepBalance.innerHTML = tokenbalances;
+  zepBalance.innerHTML = tokenbalance;
 }
 
   </script>
