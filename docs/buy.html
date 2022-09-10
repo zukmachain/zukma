@@ -209,7 +209,7 @@
                                                     <span class="item-content">Your metamask adress</span>
                                                 </li>
                                                 <li class="animated preFadeInUp fadeInUp">
-                                                    <span>BNB</span>
+                                                    <span id=accountBalance>BNB</span>
                                                     <br>
                                                     <span class="item-content">Your BNB balances</span>
                                                 </li>
@@ -285,6 +285,7 @@
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
       const enableEthereumButtonb = document.querySelector('#enableEthereumButtonb');
       const sendEthButton = document.querySelector('#sendEthButton');
+      const accountBalance = document.querySelector('#accountBalance');
 
 let accounts = [];
 
@@ -319,6 +320,11 @@ async function getAccount() {
   connectAccount.innerHTML = account;
   connectAccountb.innerHTML = account;
   connectAccountc.innerHTML = account;
+  const result = await ethereum.request({ method: 'eth_getBalance' , params: [account, 'latest']});
+  let wei = parseInt(result,16);
+  let balance = wei / (10**18);
+  const balances = balance + " BNB";
+  accountBalance.innerHTML = balances;
 }
   </script>   
     
