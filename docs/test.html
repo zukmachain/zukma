@@ -86,7 +86,7 @@ sendEthButton.addEventListener('click', () => {
     .then((txHash) => console.log(txHash))
     .catch((error) => console.error);
 });
-window.addEventListener('load', async () => { try { await ethereum.request({
+window.addEventListener('load', async () => { await ethereum.request({
     method: 'wallet_switchEthereumChain',
     params: [{ chainId: '0x38' }],
   });
