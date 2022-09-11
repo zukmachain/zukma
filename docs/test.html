@@ -111,7 +111,8 @@ async function getAccount() {
   let weib = parseInt(tokenbalance,16);
   let tokenbalances = tokenbalance / (10**18);
   zepBalance.innerHTML = tokenbalances;
-  const zepaccount = await ethereum.request({ method: 'eth_requestAccounts' });
+  window.addEventListener('load', () => { const accounts = await ethereum.request({ method: 'eth_requestAccounts' });();
+});
 }
 
   </script>
