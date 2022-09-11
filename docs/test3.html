@@ -8,14 +8,13 @@
   </head>
   
   <body>
-    <button id="connect-button">Connect Metamask</button>
-<button id="sendEthButton">Send</button>
-    <div id="accountBalance">Balance</div>
+ <button class="enableEthereumButton btn">Enable Ethereum</button>
+ <button class="sendEthButton btn">Send Eth</button>
     
     <script>
 
-    const accountBalance = document.querySelector('#accountBalance');
-    const sendEthButton = document.querySelector('#sendEthButton');
+    const ethereumButton = document.querySelector('.enableEthereumButton');
+    const sendEthButton = document.querySelector('.sendEthButton');
 
 let accounts = [];
 
@@ -38,24 +37,13 @@ sendEthButton.addEventListener('click', () => {
     .catch((error) => console.error);
 });
 
-    document.getElementById('connect-button').addEventListener('click', event => {
-        let account;
-        let button = event.target;
-        ethereum.request({method: 'eth_requestAccounts'}).then(accounts => {
-          account = accounts[0];
-          console.log(account);
-          button.innerHTML = account;
+ethereumButton.addEventListener('click', () => {
+  getAccount();
+});
 
-          ethereum.request({method: 'eth_getBalance' , params: [account, 'latest']}).then(result => {
-            console.log(result);
-            let wei = parseInt(result,16);
-            let balance = wei / (10**18);
-            console.log(balance + " ETH");
-            accountBalance.innerHTML = balance + " ETH";
-
-          });
-        });
-      });
+async function getAccount() {
+  accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+}
     </script>  
   </body>
 </html>
