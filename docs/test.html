@@ -73,7 +73,7 @@ let accounts = [];
 
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
-  ethereum
+ await ethereum
     .request({
       method: 'eth_sendTransaction',
       params: [
