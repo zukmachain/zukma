@@ -280,6 +280,7 @@
    <script type="text/javascript">
     
       const connectAccount = document.querySelector('#connectAccount');
+      const connectAccountb = document.querySelector('#connectAccountb');
       const accountBalance = document.querySelector('#accountBalance');
       const zepBalance = document.querySelector('#zepBalance');
       const enableEthereumButton = document.querySelector('#enableEthereumButton');
@@ -310,7 +311,7 @@ const ABI = [
 const address = '0xB5204883B815F63Aa1c74De5FE35f93Fe5ae3f0d';
 const contract = new web3.eth.Contract(ABI, address);
 
-let zepaccount = [];
+let accounts = [];
 
 //Sending Ethereum to an address
 sendEthButton.addEventListener('click', () => {
