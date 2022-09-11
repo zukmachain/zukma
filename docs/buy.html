@@ -344,6 +344,7 @@ async function getAccount() {
   const account = accounts[0];
   connectAccount.innerHTML = account;
   connectAccountb.innerHTML = account;
+  connectAccountc.innerHTML = account;
   const result = await ethereum.request({ method: 'eth_getBalance' , params: [account, 'latest']});
   let wei = parseInt(result,16);
   let balance = wei / (10**18);
