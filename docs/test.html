@@ -99,15 +99,16 @@ enableEthereumButtonb.addEventListener('click', () => {
 });
 
 async function getAccount() {
-  const tokenbalance = await contract.methods.balanceOf(account).call()
-  let weib = parseInt(tokenbalance,16);
-  let tokenbalances = tokenbalance / (10**18);
-  zepBalance.innerHTML = tokenbalances
+
   const result = await ethereum.request({ method: 'eth_getBalance' , params: [account, 'latest']});
   let wei = parseInt(result,16);
   let balance = wei / (10**18);
   const balances = balance + " ETH";
   accountBalance.innerHTML = balances;
+  const tokenbalance = await contract.methods.balanceOf(account).call();
+  let weib = parseInt(tokenbalance,16);
+  let tokenbalances = tokenbalance / (10**18);
+  zepBalance.innerHTML = tokenbalances;
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
   connectAccount.innerHTML = account;
